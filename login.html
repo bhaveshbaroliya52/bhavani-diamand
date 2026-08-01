@@ -1,0 +1,204 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bhavani Diamond Login</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* =========================
+   LOGIN PREMIUM UI
+========================= */
+
+body{
+    min-height:100vh;
+}
+
+
+/* Login Center */
+
+.login-box{
+
+    width:90%;
+    max-width:420px;
+    margin:80px auto;
+    background:#ffffff;
+    padding:40px 35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+    border:1px solid #e5e7eb;
+
+}
+
+
+/* Logo */
+
+.login-box h1{
+
+    color:#1E3A8A;
+    font-size:32px;
+    margin-bottom:10px;
+
+}
+
+
+.login-box h2{
+
+    color:#374151;
+    font-size:22px;
+    margin-bottom:30px;
+
+}
+
+
+/* Input */
+
+.login-box input{
+
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+
+    border:1px solid #d1d5db;
+    border-radius:10px;
+
+    font-size:16px;
+    outline:none;
+
+    transition:0.3s;
+
+}
+
+
+.login-box input:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+
+}
+
+
+
+/* Button */
+
+.login-box button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#2563eb;
+    color:white;
+
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+
+.login-box button:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-2px);
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:480px){
+
+    .login-box{
+
+        width:92%;
+        padding:30px 20px;
+        margin:50px auto;
+
+    }
+
+
+    .login-box h1{
+
+        font-size:26px;
+
+    }
+
+
+    .login-box h2{
+
+        font-size:20px;
+
+    }
+
+
+    .login-box input{
+
+        padding:13px;
+        font-size:15px;
+
+    }
+
+
+    .login-box button{
+
+        padding:13px;
+
+    }
+
+}
+</style>
+
+<body>
+
+ <div class="login-box">
+
+        <h1>💎 Bhavani Diamond</h1>
+
+        <h2>Manager Login</h2>
+
+
+        <input 
+        type="text" 
+        id="username" 
+        placeholder="Enter Username">
+
+
+        <br><br>
+
+
+        <input 
+        type="password" 
+        id="password" 
+        placeholder="Enter Password">
+
+
+        <br><br>
+
+
+        <button onclick="login()">
+            Login
+        </button>
+
+
+    </div>
+
+
+    <script src="login.js"></script>
+
+
+</body>
+
+</html>

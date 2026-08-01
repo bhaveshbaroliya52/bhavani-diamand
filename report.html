@@ -1,0 +1,257 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* =====================================
+        REPORT PAGE - MOBILE FIRST
+===================================== */
+
+
+.report-page{
+
+    width:92%;
+
+    margin:30px auto;
+
+}
+
+
+/* TITLE */
+
+.report-page h1{
+
+    font-size:26px;
+
+    color:#1e293b;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/* REPORT CONTAINER */
+
+
+#reportContainer{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+/* REPORT CARD
+   JS thi generate thase
+*/
+
+
+.report-card{
+
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.report-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.report-card h3{
+
+    color:#2563eb;
+
+    font-size:18px;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.report-card p{
+
+    color:#475569;
+
+    margin:8px 0;
+
+    font-size:15px;
+
+}
+
+
+
+/* SALARY AMOUNT */
+
+
+.salary{
+
+    margin-top:15px;
+
+    padding:12px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    border-radius:10px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+
+
+/* EMPTY MESSAGE */
+
+
+#reportContainer p{
+
+    text-align:center;
+
+    color:#64748b;
+
+    padding:25px;
+
+}
+
+
+
+/* =====================================
+        TABLET
+===================================== */
+
+
+@media(min-width:768px){
+
+
+.report-page{
+
+    width:85%;
+
+}
+
+
+
+#reportContainer{
+
+    padding:30px;
+
+}
+
+
+
+}
+
+
+
+/* =====================================
+        DESKTOP
+===================================== */
+
+
+@media(min-width:1200px){
+
+
+.report-page{
+
+    max-width:1100px;
+
+}
+
+
+
+.report-page h1{
+
+    font-size:34px;
+
+}
+
+
+
+#reportContainer{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.report-card{
+
+    margin:0;
+
+}
+
+
+}
+</style>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        <h2>💎 Bhavani Diamond</h2>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="workers.html">Workers</a>
+        <a href="entry.html">Daily Entry</a>
+        <a href="report.html">Reports</a>
+    </nav>
+
+</header>
+
+<main class="report-page">
+
+    <h1>Salary Report</h1>
+
+    <div id="reportContainer">
+
+    </div>
+
+</main>
+
+<script src="report.js"></script>
+
+</body>
+</html>

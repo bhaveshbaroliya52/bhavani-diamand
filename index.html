@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhavani Diamond - Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h2>💎 Bhavani Diamond</h2>
+      </div>
+
+      <nav class="nav-links">
+        <a href="index.html">Dashboard</a>
+        <a href="workers.html">Workers</a>
+        <a href="entry.html">Daily Entry</a>
+        <a href="report.html">Reports</a>
+      </nav>
+
+      <div class="manager">
+        <div class="manager-area">
+          <span>👤 Manager</span>
+
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <div class="dashboard-title">
+        <h1>Dashboard</h1>
+        <p>Welcome to Bhavani Diamond Management System</p>
+      </div>
+
+      <section class="dashboard-cards">
+        <div class="card">
+          <div class="card-icon">👷</div>
+          <h3>Total Workers</h3>
+          <h2 id="totalWorkers">0</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💰</div>
+          <h3>Today's Work</h3>
+          <h2 id="todayWork">₹0</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📈</div>
+          <h3>Total Salary</h3>
+          <h2 id="totalSalary">₹0</h2>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <h3>Today's Date</h3>
+          <h2 id="todayDate"></h2>
+        </div>
+      </section>
+
+      <section class="quick-actions">
+        <a href="workers.html" class="action-btn"> 👷 Workers </a>
+
+        <a href="entry.html" class="action-btn"> 📝 Daily Entry </a>
+
+        <a href="report.html" class="action-btn"> 📊 Reports </a>
+      </section>
+    </main>
+
+    <script>
+      let loginStatus = localStorage.getItem("isLogin");
+
+      if (loginStatus !== "true") {
+        window.location.href = "login.html";
+      }
+    </script>
+    <script src="app.js"></script>
+    <script>
+      let logoutBtn = document.getElementById("logoutBtn");
+
+      if (logoutBtn) {
+        logoutBtn.onclick = function () {
+          localStorage.removeItem("isLogin");
+
+          window.location.href = "login.html";
+        };
+      }
+    </script>
+  </body>
+</html>

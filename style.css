@@ -1,0 +1,919 @@
+ /* ===============================
+   BHAVANI DIAMOND DASHBOARD UI
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+
+body{
+
+    background:#f1f5f9;
+    color:#1e293b;
+
+}
+
+
+/* ===============================
+ HEADER
+================================ */
+
+
+.header{
+
+    height:75px;
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+
+
+.logo h2{
+
+    color:#2563eb;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+
+
+/* NAV */
+
+.nav-links{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#475569;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+.nav-links a:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+
+
+/* MANAGER */
+
+
+.manager-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+
+.manager-area span{
+
+    background:#eff6ff;
+
+    padding:10px 15px;
+
+    border-radius:10px;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+
+
+#logoutBtn{
+
+    border:none;
+
+    background:#ef4444;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+#logoutBtn:hover{
+
+    background:#dc2626;
+
+}
+
+
+
+/* ===============================
+ MAIN
+================================ */
+
+
+.dashboard{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:40px auto;
+
+}
+
+
+
+.dashboard-title h1{
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.dashboard-title p{
+
+    color:#64748b;
+
+}
+
+
+
+/* ===============================
+ CARDS
+================================ */
+
+
+.dashboard-cards{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.07);
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    height:5px;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+    background:#2563eb;
+
+}
+
+
+
+.card-icon{
+
+    width:55px;
+
+    height:55px;
+
+    background:#eff6ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:15px;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.card h3{
+
+    color:#64748b;
+
+    font-size:16px;
+
+    font-weight:500;
+
+}
+
+
+
+.card h2{
+
+    font-size:30px;
+
+    margin-top:10px;
+
+    color:#0f172a;
+
+}
+
+
+
+/* ===============================
+ QUICK ACTION
+================================ */
+
+
+.quick-actions{
+
+    margin-top:40px;
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+
+.action-btn{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:18px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.action-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-5px);
+
+}
+
+
+
+/* ===============================
+ TABLET
+================================ */
+
+
+@media(max-width:1000px){
+
+
+.dashboard-cards{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+
+.nav-links{
+
+display:none;
+
+}
+
+
+}
+
+
+/* ===============================
+ MOBILE
+================================ */
+
+
+@media(max-width:600px){
+
+
+.header{
+
+height:auto;
+
+padding:20px;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+
+
+.logo h2{
+
+font-size:20px;
+
+}
+
+
+
+.manager-area{
+
+flex-direction:column;
+
+}
+
+
+
+.dashboard{
+
+width:92%;
+
+}
+
+
+
+.dashboard-title h1{
+
+font-size:26px;
+
+}
+
+
+
+.dashboard-cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.card{
+
+padding:25px;
+
+}
+
+
+
+.quick-actions{
+
+flex-direction:column;
+
+}
+
+
+}
+
+/* =================================
+   HEADER RESPONSIVE UI
+================================= */
+
+.header{
+
+    width:100%;
+    min-height:70px;
+
+    background:#1E3A8A;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+}
+
+
+.logo h2{
+
+    font-size:26px;
+    font-weight:700;
+    white-space:nowrap;
+
+}
+
+
+/* Navigation */
+
+.nav-links{
+
+    display:flex;
+    align-items:center;
+    gap:30px;
+
+}
+
+
+.nav-links a{
+
+    color:white;
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+.nav-links a:hover{
+
+    color:#FACC15;
+
+}
+
+
+/* Manager */
+
+.manager{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+}
+
+
+.manager span{
+
+    font-size:16px;
+    font-weight:600;
+
+}
+
+
+#logoutBtn{
+
+    padding:8px 16px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ef4444;
+    color:white;
+
+    cursor:pointer;
+    font-weight:600;
+
+}
+
+
+#logoutBtn:hover{
+
+    background:#dc2626;
+
+}
+
+
+/* Mobile Menu Button */
+
+.menu-btn{
+
+    display:none;
+
+    background:none;
+    border:none;
+
+    color:white;
+    font-size:28px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* =================================
+   DASHBOARD UI
+================================= */
+
+
+.dashboard{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:40px auto;
+
+}
+
+
+.dashboard-title h1{
+
+    font-size:38px;
+    color:#1f2937;
+
+}
+
+
+.dashboard-title p{
+
+    margin-top:8px;
+
+    color:#6b7280;
+
+    font-size:17px;
+
+}
+
+
+
+/* Cards */
+
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.card-icon{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:#dbeafe;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    margin-bottom:18px;
+
+}
+
+
+.card h3{
+
+    color:#6b7280;
+
+    font-size:17px;
+
+}
+
+
+.card h2{
+
+    margin-top:10px;
+
+    color:#2563eb;
+
+    font-size:34px;
+
+}
+
+
+
+/* Quick Buttons */
+
+
+.quick-actions{
+
+    margin-top:40px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+
+.action-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 30px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.action-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* =================================
+   TABLET
+================================= */
+
+
+@media(max-width:900px){
+
+
+.header{
+
+    padding:0 20px;
+
+}
+
+
+.nav-links{
+
+    gap:15px;
+
+}
+
+
+.logo h2{
+
+    font-size:22px;
+
+}
+
+
+
+}
+
+
+
+/* =================================
+   MOBILE
+================================= */
+
+
+@media(max-width:768px){
+
+
+.header{
+
+    height:65px;
+
+    padding:0 15px;
+
+}
+
+
+.menu-btn{
+
+    display:block;
+
+}
+
+
+.nav-links{
+
+    position:absolute;
+
+    top:65px;
+    left:0;
+
+    width:100%;
+
+    background:#1E3A8A;
+
+    flex-direction:column;
+
+    padding:25px 0;
+
+    display:none;
+
+}
+
+
+.nav-links.show{
+
+    display:flex;
+
+}
+
+
+.manager{
+
+    display:none;
+
+}
+
+
+
+.logo h2{
+
+    font-size:19px;
+
+}
+
+
+
+.dashboard{
+
+    width:94%;
+
+}
+
+
+.dashboard-title h1{
+
+    font-size:30px;
+
+}
+
+
+.dashboard-title p{
+
+    font-size:15px;
+
+}
+
+
+
+.dashboard-cards{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.card{
+
+    padding:22px;
+
+}
+
+
+.card h2{
+
+    font-size:30px;
+
+}
+
+
+
+.quick-actions{
+
+    flex-direction:column;
+
+}
+
+
+
+.action-btn{
+
+    text-align:center;
+
+    width:100%;
+
+}
+
+
+}
