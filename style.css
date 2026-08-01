@@ -917,3 +917,86 @@ flex-direction:column;
 
 
 }
+
+
+
+
+
+
+/* ===========================
+   Mobile Responsive
+=========================== */
+
+@media (max-width:768px){
+
+.header{
+    padding:15px;
+    height:auto;
+    flex-direction:column;
+    gap:15px;
+    position:relative;
+}
+
+.logo h2{
+    font-size:22px;
+    text-align:center;
+}
+
+.nav-links{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.nav-links a{
+    font-size:15px;
+    padding:8px 12px;
+}
+
+.manager{
+    width:100%;
+    justify-content:center;
+}
+
+.dashboard{
+    width:95%;
+    margin:20px auto;
+}
+
+.dashboard-title{
+    text-align:center;
+}
+
+.dashboard-title h1{
+    font-size:28px;
+}
+
+.dashboard-title p{
+    font-size:14px;
+}
+
+.dashboard-cards{
+    grid-template-columns:1fr;
+    gap:15px;
+}
+
+.card{
+    padding:20px;
+}
+
+.card h2{
+    font-size:30px;
+}
+
+.quick-actions{
+    flex-direction:column;
+}
+
+.action-btn{
+    width:100%;
+    text-align:center;
+}
+
+}
