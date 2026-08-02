@@ -118,3 +118,44 @@ if(menuToggle){
     }
 
 }
+
+
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("mobileSidebar");
+const overlay = document.getElementById("overlay");
+
+if(menuBtn){
+
+    menuBtn.onclick = () =>{
+
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+    };
+
+}
+
+if(overlay){
+
+    overlay.onclick = () =>{
+
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+
+    };
+
+}
+
+const mobileLogout = document.getElementById("mobileLogout");
+
+if(mobileLogout){
+
+    mobileLogout.onclick = ()=>{
+
+        localStorage.removeItem("isLogin");
+        window.location.href="login.html";
+
+    };
+
+}
+
