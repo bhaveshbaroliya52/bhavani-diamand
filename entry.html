@@ -255,6 +255,111 @@
 
 
 }
+
+
+
+
+
+
+
+/* ==========================
+   Entry Card Professional UI
+========================== */
+
+.entry-card{
+    background:#ffffff;
+    border-radius:20px;
+    padding:22px;
+    margin:18px 0;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border-left:6px solid #2563eb;
+    transition:.3s ease;
+}
+
+.entry-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+
+.entry-card h3{
+    margin:0;
+    font-size:24px;
+    font-weight:700;
+    color:#1e293b;
+    text-align:center;
+}
+
+.entry-card p{
+    margin:12px 0;
+    text-align:center;
+    color:#64748b;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing: 2px;
+}
+
+.entry-card h2{
+    margin:0;
+    text-align:center;
+    font-size:34px;
+    /* color:#2563eb; */
+    /* font-weight:700; */
+}
+
+.entry-card button{
+    margin-top:20px;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:#ef4444;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.entry-card button:hover{
+    background:#dc2626;
+    transform:scale(1.02);
+}
+
+/* Different Color Cards */
+
+.entry-card:nth-child(4n+1){
+    border-left-color:#2563eb;
+}
+
+.entry-card:nth-child(4n+2){
+    border-left-color:#16a34a;
+}
+
+.entry-card:nth-child(4n+3){
+    border-left-color:#ea580c;
+}
+
+.entry-card:nth-child(4n+4){
+    border-left-color:#9333ea;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.entry-card{
+    padding:18px;
+}
+
+.entry-card h3{
+    font-size:20px;
+}
+
+.entry-card h2{
+    font-size:28px;
+}
+
+}
 </style>
 
 <body>
