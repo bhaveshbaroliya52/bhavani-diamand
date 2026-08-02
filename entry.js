@@ -11,21 +11,133 @@ const workerSelect = document.getElementById("workerSelect");
 const workAmount = document.getElementById("workAmount");
 const saveEntry = document.getElementById("saveEntry");
 const entryList = document.getElementById("entryList");
+const workerInfo = document.getElementById("workerInfo");
+
+const infoWorkerNo = document.getElementById("infoWorkerNo");
+const infoWorkerName = document.getElementById("infoWorkerName");
+const infoSalary = document.getElementById("infoSalary");
+const infoAbsent = document.getElementById("infoAbsent");
+const infoWork = document.getElementById("infoWork");
+
+
+function showWorkerInfo(workerNo){
+
+    const worker = workers.find(w => w.workerNo == workerNo);
+
+    if(!worker){
+
+        workerInfo.style.display = "none";
+        return;
+
+    }
+
+    workerInfo.style.display = "block";
+
+    infoWorkerNo.innerHTML = "Worker No : " + worker.workerNo;
+
+    infoWorkerName.innerHTML = "Name : " + worker.name;
+
+    infoSalary.innerHTML = worker.salary || 0;
+
+    infoAbsent.innerHTML = worker.absent || 0;
+
+    let totalWork = 0;
+
+    worker.work.forEach(entry=>{
+
+        totalWork += Number(entry.amount);
+
+    });
+
+    infoWork.innerHTML = totalWork;
+
+
+
+
+    showEntries();
+
+}
+showEntries();
 
 // =====================================
 // Load Workers in Dropdown
 // =====================================
-
 function loadWorkers() {
 
-    workerSelect.innerHTML = `<option value="">Select Worker</option>`;
+    workerSelect.innerHTML = `<option value="">Select Worker Number</option>`;
 
-    workers.forEach((worker, index) => {
+    workers.forEach((worker) => {
 
         workerSelect.innerHTML += `
-            <option value="${index}">
-                ${worker.name}
+            <option value="${worker.workerNo}">
+                ${worker.workerNo}
             </option>
+        `;
+
+    });
+
+}
+workerSelect.addEventListener("change",()=>{
+
+    showWorkerInfo(workerSelect.value);
+
+});
+// =====================================
+// Show All Entries
+// =====================================
+function showEntries() {
+
+    const historyBody = document.getElementById("historyBody");
+
+    if (!historyBody) return;
+
+    historyBody.innerHTML = "";
+
+    const workerNo = Number(workerSelect.value);
+
+    if (!workerNo) return;
+
+    const worker = workers.find(w => w.workerNo == workerNo);
+
+    if (!worker) return;
+
+    if (worker.work.length === 0) {
+
+        historyBody.innerHTML = `
+            <tr>
+                <td colspan="3" style="text-align:center;">
+                    No History Found
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    worker.work.forEach((entry, index) => {
+
+        historyBody.innerHTML += `
+
+        <tr>
+
+            <td>${entry.date}</td>
+
+            <td>${entry.amount}</td>
+
+           <td>
+
+    <button onclick="editEntry(${workers.indexOf(worker)},${index})">
+        ✏️ Edit
+    </button>
+
+    <button onclick="deleteEntry(${workers.indexOf(worker)},${index})">
+        🗑 Delete
+    </button>
+
+</td>
+
+        </tr>
+
         `;
 
     });
@@ -33,75 +145,71 @@ function loadWorkers() {
 }
 
 // =====================================
-// Show All Entries
-// =====================================
-
-function showEntries() {
-
-    entryList.innerHTML = "";
-
-    let totalEntries = 0;
-
-    workers.forEach((worker, workerIndex) => {
-
-        worker.work.forEach((entry, entryIndex) => {
-
-            totalEntries++;
-
-            entryList.innerHTML += `
-
-                <div class="entry-card">
-
-                    <h3>${worker.name}</h3>
-
-                    <p>${entry.date}</p>
-
-                    <h2>₹${entry.amount}</h2>
-
-                    <button onclick="deleteEntry(${workerIndex}, ${entryIndex})">
-                        🗑 Delete
-                    </button>
-
-                </div>
-
-            `;
-
-        });
-
-    });
-
-    if (totalEntries === 0) {
-
-        entryList.innerHTML = `<p>No entries found.</p>`;
-
-    }
-
-}
-
-// =====================================
 // Save Entry
 // =====================================
 
+// saveEntry.addEventListener("click", () => {
+
+//     let workerIndex = workerSelect.value;
+//     let amount = Number(workAmount.value);
+
+//     if (workerIndex === "") {
+
+//         alert("Please Select Worker");
+//         return;
+
+//     }
+
+//     if (amount <= 0) {
+
+//         alert("Please Enter Valid Amount");
+//         return;
+
+//     }
+
+//     workers[workerIndex].work.push({
+
+//         id: Date.now(),
+
+//         date: new Date().toLocaleDateString(),
+
+//         amount: amount
+
+//     });
+
+//     localStorage.setItem("workers", JSON.stringify(workers));
+
+//     workerSelect.value = "";
+//     workAmount.value = "";
+
+//     showEntries();
+
+//     alert("Work Entry Saved Successfully");
+
+// });
 saveEntry.addEventListener("click", () => {
 
-    let workerIndex = workerSelect.value;
-    let amount = Number(workAmount.value);
+    const workerNo = Number(workerSelect.value);
+    const amount = Number(workAmount.value);
 
-    if (workerIndex === "") {
-
-        alert("Please Select Worker");
+    if (!workerNo) {
+        alert("Please Select Worker Number");
         return;
-
     }
 
     if (amount <= 0) {
-
-        alert("Please Enter Valid Amount");
+        alert("Please Enter Valid Work");
         return;
-
     }
 
-    workers[workerIndex].work.push({
+    const worker = workers.find(w => w.workerNo == workerNo);
+
+    if (!worker) {
+        alert("Worker Not Found");
+        return;
+    }
+
+    worker.work.push({
 
         id: Date.now(),
 
@@ -111,14 +219,21 @@ saveEntry.addEventListener("click", () => {
 
     });
 
+    worker.salary = worker.work.reduce((total, entry) => {
+
+    return total + (Number(entry.amount) * (worker.rate || 10));
+
+}, 0);
+
     localStorage.setItem("workers", JSON.stringify(workers));
 
-    workerSelect.value = "";
     workAmount.value = "";
+
+    showWorkerInfo(workerNo);
 
     showEntries();
 
-    alert("Work Entry Saved Successfully");
+    alert("Entry Saved");
 
 });
 
@@ -133,10 +248,62 @@ function deleteEntry(workerIndex, entryIndex) {
     if (!ok) return;
 
     workers[workerIndex].work.splice(entryIndex, 1);
+    let totalSalary = 0;
+
+workers[workerIndex].work.forEach(entry => {
+
+    totalSalary += Number(entry.amount) * (workers[workerIndex].rate || 10);
+
+});
+
+workers[workerIndex].salary = totalSalary;
 
     localStorage.setItem("workers", JSON.stringify(workers));
 
     showEntries();
+
+}
+
+
+
+function editEntry(workerIndex, entryIndex){
+
+    let newAmount = prompt(
+        "Enter New Diamond Count",
+        workers[workerIndex].work[entryIndex].amount
+    );
+
+    if(newAmount === null) return;
+
+    newAmount = Number(newAmount);
+
+    if(newAmount <= 0){
+
+        alert("Invalid Diamond Count");
+        return;
+
+    }
+
+    workers[workerIndex].work[entryIndex].amount = newAmount;
+
+    let totalSalary = 0;
+
+workers[workerIndex].work.forEach(entry => {
+
+    totalSalary += Number(entry.amount) * (workers[workerIndex].rate || 10);
+
+});
+
+workers[workerIndex].salary = totalSalary;
+
+    localStorage.setItem(
+        "workers",
+        JSON.stringify(workers)
+    );
+
+    showWorkerInfo(workers[workerIndex].workerNo);
+
+    alert("Entry Updated Successfully");
 
 }
 

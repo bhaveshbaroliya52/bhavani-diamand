@@ -1,474 +1,380 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Daily Entry</title>
 
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
     /* ===================================
       DAILY ENTRY PAGE UI
 =================================== */
 
+    .entry-page {
+      width: 90%;
 
-.entry-page{
+      max-width: 900px;
 
-    width:90%;
+      margin: 40px auto;
 
-    max-width:900px;
+      background: white;
 
-    margin:40px auto;
+      padding: 35px;
 
-    background:white;
+      border-radius: 20px;
 
-    padding:35px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
 
-    border-radius:20px;
+    .entry-page h1 {
+      font-size: 32px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+      margin-bottom: 30px;
 
-}
+      color: #1e293b;
+    }
 
+    .entry-page h2 {
+      margin-top: 30px;
 
+      margin-bottom: 20px;
 
-.entry-page h1{
+      color: #2563eb;
+    }
 
-    font-size:32px;
+    /* SELECT BOX */
 
-    margin-bottom:30px;
+    #workerSelect {
+      width: 100%;
 
-    color:#1e293b;
+      padding: 15px;
 
-}
+      border: 1px solid #cbd5e1;
 
+      border-radius: 12px;
 
+      font-size: 16px;
 
-.entry-page h2{
+      outline: none;
 
-    margin-top:30px;
+      background: #f8fafc;
 
-    margin-bottom:20px;
+      cursor: pointer;
 
-    color:#2563eb;
+      transition: 0.3s;
+    }
 
-}
+    #workerSelect:focus {
+      border-color: #2563eb;
 
+      background: white;
+    }
 
-/* SELECT BOX */
+    /* INPUT */
 
+    #workAmount {
+      width: 100%;
 
-#workerSelect{
+      padding: 15px;
 
+      border: 1px solid #cbd5e1;
 
-    width:100%;
+      border-radius: 12px;
 
-    padding:15px;
+      font-size: 16px;
 
-    border:1px solid #cbd5e1;
+      outline: none;
 
-    border-radius:12px;
+      margin-top: 15px;
 
-    font-size:16px;
+      transition: 0.3s;
+    }
 
-    outline:none;
+    #workAmount:focus {
+      border-color: #2563eb;
 
-    background:#f8fafc;
+      background: #fff;
+    }
 
-    cursor:pointer;
+    /* BUTTON */
 
-    transition:.3s;
+    #saveEntry {
+      margin-top: 20px;
 
-}
+      width: 100%;
 
+      padding: 15px;
 
+      border: none;
 
-#workerSelect:focus{
+      border-radius: 12px;
 
-    border-color:#2563eb;
+      background: #2563eb;
 
-    background:white;
+      color: white;
 
-}
+      font-size: 17px;
 
+      font-weight: 600;
 
+      cursor: pointer;
 
-/* INPUT */
+      transition: 0.3s;
+    }
 
+    #saveEntry:hover {
+      background: #1d4ed8;
 
-#workAmount{
+      transform: translateY(-3px);
+    }
 
+    /* LINE */
 
-    width:100%;
+    .entry-page hr {
+      margin: 35px 0;
 
-    padding:15px;
+      border: none;
 
-    border:1px solid #cbd5e1;
+      border-top: 1px solid #e2e8f0;
+    }
 
-    border-radius:12px;
+    /* ENTRY LIST */
 
-    font-size:16px;
+    #entryList {
+      background: #f8fafc;
 
-    outline:none;
+      min-height: 120px;
 
-    margin-top:15px;
+      padding: 20px;
 
-    transition:.3s;
+      border-radius: 15px;
 
-}
+      border: 1px solid #e2e8f0;
+    }
 
+    #entryList p {
+      color: #64748b;
 
+      text-align: center;
+    }
 
-#workAmount:focus{
-
-    border-color:#2563eb;
-
-    background:#fff;
-
-}
-
-
-
-/* BUTTON */
-
-
-#saveEntry{
-
-    margin-top:20px;
-
-    width:100%;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#2563eb;
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-
-#saveEntry:hover{
-
-    background:#1d4ed8;
-
-    transform:translateY(-3px);
-
-}
-
-
-
-/* LINE */
-
-
-.entry-page hr{
-
-    margin:35px 0;
-
-    border:none;
-
-    border-top:1px solid #e2e8f0;
-
-}
-
-
-
-/* ENTRY LIST */
-
-
-#entryList{
-
-    background:#f8fafc;
-
-    min-height:120px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    border:1px solid #e2e8f0;
-
-}
-
-
-
-#entryList p{
-
-    color:#64748b;
-
-    text-align:center;
-
-}
-
-
-
-/* ===================================
+    /* ===================================
         MOBILE
 =================================== */
 
+    @media (max-width: 600px) {
+      .entry-page {
+        width: 92%;
 
-@media(max-width:600px){
+        padding: 25px;
 
+        margin-top: 25px;
+      }
 
-.entry-page{
+      .entry-page h1 {
+        font-size: 24px;
+      }
 
-    width:92%;
+      #saveEntry {
+        font-size: 15px;
+      }
+    }
 
-    padding:25px;
-
-    margin-top:25px;
-
-}
-
-
-
-.entry-page h1{
-
-    font-size:24px;
-
-}
-
-
-
-#saveEntry{
-
-    font-size:15px;
-
-}
-
-
-}
-
-
-
-
-
-
-
-/* ==========================
+    /* ==========================
    Entry Card Professional UI
 ========================== */
 
-.entry-card{
-    background:#ffffff;
-    border-radius:20px;
-    padding:22px;
-    margin:18px 0;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    border-left:6px solid #2563eb;
-    transition:.3s ease;
-}
+    .entry-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      margin: 18px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-left: 6px solid #2563eb;
+      transition: 0.3s ease;
+    }
 
-.entry-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 18px 35px rgba(0,0,0,.12);
-}
+    .entry-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+    }
 
-.entry-card h3{
-    margin:0;
-    font-size:24px;
-    font-weight:700;
-    color:#1e293b;
-    text-align:center;
-}
+    .entry-card h3 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: center;
+    }
 
-.entry-card p{
-    margin:12px 0;
-    text-align:center;
-    color:#64748b;
-    font-size:15px;
-    font-weight:500;
-    letter-spacing: 2px;
-}
+    .entry-card p {
+      margin: 12px 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
 
-.entry-card h2{
-    margin:0;
-    text-align:center;
-    font-size:34px;
-    /* color:#2563eb; */
-    /* font-weight:700; */
-}
+    .entry-card h2 {
+      margin: 0;
+      text-align: center;
+      font-size: 34px;
+      /* color:#2563eb; */
+      /* font-weight:700; */
+    }
 
-.entry-card button{
-    margin-top:20px;
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:12px;
-    background:#ef4444;
-    color:#fff;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
+    .entry-card button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #ef4444;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.entry-card button:hover{
-    background:#dc2626;
-    transform:scale(1.02);
-}
+    .entry-card button:hover {
+      background: #dc2626;
+      transform: scale(1.02);
+    }
 
-/* Different Color Cards */
+    /* Different Color Cards */
 
-.entry-card:nth-child(4n+1){
-    border-left-color:#2563eb;
-}
+    .entry-card:nth-child(4n + 1) {
+      border-left-color: #2563eb;
+    }
 
-.entry-card:nth-child(4n+2){
-    border-left-color:#16a34a;
-}
+    .entry-card:nth-child(4n + 2) {
+      border-left-color: #16a34a;
+    }
 
-.entry-card:nth-child(4n+3){
-    border-left-color:#ea580c;
-}
+    .entry-card:nth-child(4n + 3) {
+      border-left-color: #ea580c;
+    }
 
-.entry-card:nth-child(4n+4){
-    border-left-color:#9333ea;
-}
+    .entry-card:nth-child(4n + 4) {
+      border-left-color: #9333ea;
+    }
 
-/* Mobile */
+    /* Mobile */
 
-@media(max-width:768px){
+    @media (max-width: 768px) {
+      .entry-card {
+        padding: 18px;
+      }
 
-.entry-card{
-    padding:18px;
-}
+      .entry-card h3 {
+        font-size: 20px;
+      }
 
-.entry-card h3{
-    font-size:20px;
-}
+      .entry-card h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 
-.entry-card h2{
-    font-size:28px;
-}
-
-}
-</style>
-
-<body>
-
-<!-- <header class="header">
-
-    <div class="logo">
-        <h2>💎 Bhavani Diamond</h2>
-    </div>
-
-    <nav class="nav-links">
-        <a href="index.html">Dashboard</a>
-        <a href="workers.html">Workers</a>
-        <a href="entry.html">Daily Entry</a>
-        <a href="report.html">Reports</a>
-    </nav>
-
-</header> -->
- <header class="header">
-
-    <div class="logo">
+  <body>
+    <header class="header">
+      <div class="logo">
         <span>💎</span>
         <h2>Bhavani Diamond</h2>
-    </div>
+      </div>
 
-   <button class="menu-btn" id="menuBtn">
-    ☰
-</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
 
-    <nav class="nav-links">
-
+      <nav class="nav-links">
         <a href="index.html">Dashboard</a>
         <a href="workers.html">Workers</a>
         <a href="entry.html">Entry</a>
         <a href="report.html">Reports</a>
+      </nav>
 
-    </nav>
+      <div class="manager-area">
+        <span class="manager-name"> 👤 Manager </span>
 
-    <div class="manager-area">
+        <button id="logoutBtn">Logout</button>
+      </div>
 
-        <span class="manager-name">
-            👤 Manager
-        </span>
+      <div class="mobile-sidebar" id="mobileSidebar">
+        <a href="index.html">🏠 Dashboard</a>
 
-        <button id="logoutBtn">
-            Logout
-        </button>
+        <a href="workers.html">👷 Workers</a>
 
-    </div>
+        <a href="entry.html">📝 Daily Entry</a>
 
-<div class="mobile-sidebar" id="mobileSidebar">
+        <a href="report.html">📊 Reports</a>
 
-    <a href="index.html">🏠 Dashboard</a>
+        <button id="mobileLogout">🚪 Logout</button>
+      </div>
 
-    <a href="workers.html">👷 Workers</a>
+      <div class="overlay" id="overlay"></div>
+    </header>
 
-    <a href="entry.html">📝 Daily Entry</a>
+    <main class="entry-page">
+      <h1>Daily Work Entry</h1>
+      <select id="workerSelect">
+        <option value="">Select Worker</option>
+      </select>
 
-    <a href="report.html">📊 Reports</a>
+      <div id="workerInfo" class="worker-info" style="display: none">
+        <h3 id="infoWorkerNo"></h3>
 
-    <button id="mobileLogout">
-        🚪 Logout
-    </button>
+        <h3 id="infoWorkerName"></h3>
 
-</div>
+        <p><strong>Total Salary :</strong> ₹<span id="infoSalary">0</span></p>
 
-<div class="overlay" id="overlay"></div>
+        <p><strong>Absent :</strong> <span id="infoAbsent">0</span></p>
 
-</header>
+        <p><strong>Total Work :</strong> <span id="infoWork">0</span></p>
+      </div>
 
+      <br /><br />
 
-<main class="entry-page">
+      <input type="number" id="workAmount" placeholder="Today's Work Amount" />
+      <br /><br />
 
-<h1>Daily Work Entry</h1>
+      <button id="saveEntry">Save Entry</button>
+      <hr />
 
-<select id="workerSelect">
+      <h2>Today's Entries</h2>
 
-<option value="">Select Worker</option>
-
-</select>
-
-<br><br>
-
-<input
-type="number"
-id="workAmount"
-placeholder="Today's Work Amount">
-
-<br><br>
-
-<button id="saveEntry">
-
-Save Entry
-
-</button>
-<hr>
-
-<h2>Today's Entries</h2>
+      <h2>Worker History</h2>
 
 <div id="entryList">
 
-    <p>No entries found.</p>
+<table width="100%" border="1" cellspacing="0" cellpadding="10">
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>Diamond</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="historyBody">
+
+</tbody>
+
+</table>
 
 </div>
+    </main>
 
-</main>
-
-<script src="entry.js"></script>
-
-</body>
-
+    <script src="entry.js"></script>
+  </body>
 </html>

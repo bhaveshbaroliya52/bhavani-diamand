@@ -128,7 +128,7 @@ function displayWorkers() {
         
         <div class="worker-card">
 
-            <h3>${worker.name}</h3>
+           <h3>${worker.workerNo} - ${worker.name}</h3>
 
             <button onclick="deleteWorker(${index})">
                 Delete
@@ -155,17 +155,23 @@ addWorkerBtn.addEventListener("click", () => {
 
     }
 
-    workers.push({
+   workers.push({
 
-        id: Date.now(),
+    id: Date.now(),
 
-        name: name,
+    workerNo: workers.length + 1,
 
-        salary: 0,
+    name: name,
 
-        work: []
+    rate: 10,
 
-    });
+    salary: 0,
+
+    absent: 0,
+
+    work: []
+
+});
 
     localStorage.setItem("workers", JSON.stringify(workers));
 
@@ -181,6 +187,9 @@ function deleteWorker(index) {
     if (confirm("Delete this worker?")) {
 
         workers.splice(index, 1);
+        workers.forEach((worker, i) => {
+    worker.workerNo = i + 1;
+});
 
         localStorage.setItem("workers", JSON.stringify(workers));
 
